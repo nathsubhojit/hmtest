@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(randomnumberhistory)}">
+        <h2>Random Number List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Random Number 1</th>
+                <th>Random Number 2</th>
+                <th>Random Number 3</th>
+                <th>Time Taken in milliseconds</th>
+                <th>Number Of Swaps</th>                      
+            </tr>
+            <tr th:each="randomNumber : ${randomnumberhistory}">
+                <td th:text="${randomNumber.app_Number1}">Random Number 1</td>
+                <td th:text="${randomNumber.app_Number2}">Random Number 2</td>
+                <td th:text="${randomNumber.app_Number3}">Random Number 3</td>
+                <td th:text="${randomNumber.timeTaken}">Time Taken</td>
+                <td th:text="${randomNumber.swaps}">Number Of Swaps</td>                
+            </tr>
+        </table>
+		<div>
+			<a href="#" th:href="@{/randomnumber/new}">Generate Random</a>
+		</div>
+    </div>
+</div>
+
+</body>
+</html>
